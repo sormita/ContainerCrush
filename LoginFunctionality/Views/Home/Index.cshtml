@@ -1,0 +1,32 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        @*<a href="@Url.Action("Index", "Product")">Product List</a>
+        <br />
+        <a href="@Url.Action("Index", "ProductReview")">Product Review</a>*@
+
+        <h1 class="display-4">Welcome</h1><a href="@Url.Action("Logout", "Account")">Logout</a>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <table class="table-table-sm">
+                @foreach (var claim in User.Claims)
+                {
+                    <tr>
+                        <td>
+                            @claim.Type
+                        </td>
+                        <td>
+                            @claim.Value
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+
+    </div>

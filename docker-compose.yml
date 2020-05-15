@@ -1,0 +1,68 @@
+version: '3.4'
+
+services:
+  postgresdata:
+    image: postgres:latest 
+    container_name: postgresdata
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "secret1234"
+      POSTGRES_HOST: "postgresdata"
+      POSTGRES_PORT: "51036"
+      POSTGRES_DB: "postgres"
+    ports:
+    - "51036:5432"
+
+  postgresqldapper:
+    image: ${DOCKER_REGISTRY-}postgresqldapper
+    container_name: postgresqldapper
+    environment: 
+        - ConnectionString= User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;
+    ports:
+      - "5010:5001"
+    build:
+      context: .
+      dockerfile: PostGresqlDapper/Dockerfile      
+    depends_on:
+      - postgresdata
+ 
+  loginservicedapr:
+    image: ${DOCKER_REGISTRY-}loginservicedapr
+    container_name: loginservicedapr
+    environment: 
+        - ConnectionString= User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;
+    ports:
+      - "5016:80"
+    build:
+      context: .
+      dockerfile: LoginServiceDapr/Dockerfile      
+    depends_on:
+      - postgresdata
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    container_name: apigateway
+    ports:
+      - "5018:81"
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile      
+    depends_on:
+      - postgresqldapper
+      - loginservicedapr
+
+  loginfunctionality:
+    image: ${DOCKER_REGISTRY-}loginfunctionality
+    container_name: loginfunctionality
+    environment: 
+        - WebApiBaseUrl= http://localhost:81
+        - ASPNETCORE_ENVIRONMENT= Development
+    ports:
+      - "5014:80"
+    build:
+      context: .
+      dockerfile: LoginFunctionality/Dockerfile      
+    depends_on:
+      - apigateway
+      

@@ -1,0 +1,57 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/actor",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "postgresqldapper",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/actor",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/weatherforecast",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "postgresqldapper",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/weatherforecast",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "loginservicedapr",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "loginservicedapr",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user/{id}",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration"
+  }
+}

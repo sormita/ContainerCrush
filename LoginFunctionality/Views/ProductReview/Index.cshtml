@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Review>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Product Review</h1>
+<div class="row">
+    <ul>
+        @foreach (var revw in Model)
+        {
+            <li>@Html.DisplayFor(modelItem => revw.reviewDate)  </li>
+            <li>@Html.DisplayFor(modelItem => revw.reviewerName)  </li>
+            <li>@Html.DisplayFor(modelItem => revw.Comments)  </li>
+            <li>@Html.DisplayFor(modelItem => revw.EmailAddress)  </li>
+        }
+    </ul>
+</div>
+

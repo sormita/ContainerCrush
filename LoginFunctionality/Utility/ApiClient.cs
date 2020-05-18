@@ -1,5 +1,6 @@
 ﻿using LoginFunctionality.Utility.UtilityModel;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
@@ -16,6 +17,7 @@ namespace LoginFunctionality.Utility
     {
         private readonly HttpClient _httpClient;
         private readonly IOptions<SettingsModel> appSettings;
+        private ILogger _logger;
         private Uri BaseEndpoint { get; set; }
 
         private static JsonSerializerSettings MicrosoftDateFormatSettings
@@ -29,21 +31,22 @@ namespace LoginFunctionality.Utility
             }
         }
 
-        public ApiClient(IOptions<SettingsModel> app)
+        public ApiClient(IOptions<SettingsModel> app, ILogger<ApiClient> logger)
         {
+            _logger = logger;
             appSettings = app;
-            if (appSettings != null)
-            {
-                var baseEndpoint = appSettings.Value.WebApiBaseUrl.ToString();
-                if (baseEndpoint == null)
-                {
-                    throw new ArgumentNullException("baseEndpoint");
-                }
-                BaseEndpoint = new Uri(baseEndpoint);
-                _httpClient = new HttpClient();
-            }
-            else
-            {
+            //if (appSettings != null)
+            //{
+            //    var baseEndpoint = appSettings.Value.WebApiBaseUrl.ToString();
+            //    if (baseEndpoint == null)
+            //    {
+            //        throw new ArgumentNullException("baseEndpoint");
+            //    }
+            //    BaseEndpoint = new Uri(baseEndpoint);
+            //    _httpClient = new HttpClient();
+            //}
+            //else
+            //{
                 IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -51,13 +54,14 @@ namespace LoginFunctionality.Utility
                 .Build();
 
                 var baseEndpoint = configuration["WebApiBaseUrl"];
+            _logger.LogInformation(baseEndpoint);
                 if (baseEndpoint == null)
                 {
                     throw new ArgumentNullException("baseEndpoint");
                 }
                 BaseEndpoint = new Uri(baseEndpoint);
                 _httpClient = new HttpClient();
-            }
+            //}
             
         }
 
@@ -66,8 +70,9 @@ namespace LoginFunctionality.Utility
         /// </summary>  
         public async Task<T> GetAsync<T>(string requestUrl)
         {
-            
+
             //addHeaders();
+            _logger.LogInformation(BaseEndpoint.ToString());
             var response = await _httpClient.GetAsync(BaseEndpoint+requestUrl, HttpCompletionOption.ResponseHeadersRead);
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
@@ -81,6 +86,7 @@ namespace LoginFunctionality.Utility
         {
 
             //addHeaders();
+            _logger.LogInformation(BaseEndpoint.ToString());
             var response = await _httpClient.GetAsync(BaseEndpoint + requestUrl, HttpCompletionOption.ResponseHeadersRead);
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();

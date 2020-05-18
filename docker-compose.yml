@@ -56,7 +56,7 @@ services:
     image: ${DOCKER_REGISTRY-}loginfunctionality
     container_name: loginfunctionality
     environment: 
-        - WebApiBaseUrl= http://localhost:81
+        - WebApiBaseUrl= http://apigateway:81/api/
         - ASPNETCORE_ENVIRONMENT= Development
     ports:
       - "5014:80"

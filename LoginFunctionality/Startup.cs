@@ -30,6 +30,7 @@ namespace LoginFunctionality
         {
             services.AddControllersWithViews();
             services.Configure<SettingsModel>(Configuration.GetSection("ProjectSettings"));
+            services.AddLogging();
 
             //services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedPhoneNumber = false)
             //    .AddDefaultTokenProviders();
@@ -38,7 +39,7 @@ namespace LoginFunctionality
             //{
             //    cfg.User.RequireUniqueEmail = true;
             //});
-            
+
             //services.AddAuthentication(cfg =>
             //{
             //    cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

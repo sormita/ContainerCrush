@@ -40,6 +40,19 @@ services:
     depends_on:
       - postgresdata
 
+  productservice:
+    image: ${DOCKER_REGISTRY-}productservice
+    container_name: productservice
+    environment: 
+        - ConnectionString= User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;
+    ports:
+      - "5020:80"
+    build:
+      context: .
+      dockerfile: ProductService/Dockerfile      
+    depends_on:
+      - postgresdata
+
   apigateway:
     image: ${DOCKER_REGISTRY-}apigateway
     container_name: apigateway
@@ -51,6 +64,7 @@ services:
     depends_on:
       - postgresqldapper
       - loginservicedapr
+      - productservice
 
   loginfunctionality:
     image: ${DOCKER_REGISTRY-}loginfunctionality

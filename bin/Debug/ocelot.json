@@ -5,11 +5,23 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 53578
+          "Host": "postgresqldapper",
+          "Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/api/actor",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "productservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/product",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
@@ -17,8 +29,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 57166
+          "Host": "postgresqldapper",
+          "Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/api/weatherforecast",
@@ -29,8 +41,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 57166
+          "Host": "loginservicedapr",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/user",
@@ -41,8 +53,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 57166
+          "Host": "loginservicedapr",
+          "Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/api/user/{id}",

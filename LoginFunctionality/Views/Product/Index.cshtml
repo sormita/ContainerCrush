@@ -10,7 +10,8 @@
     <ul>
         @foreach (var prod in Model)
         {
-            <li>@Html.DisplayFor(modelItem => prod.Name)  </li>
+        <li>@Html.DisplayFor(modelItem => prod.Name) <br /> @Html.DisplayFor(modelItem => prod.ProductNumber)   </li>
+            
         }
     </ul>
 </div>

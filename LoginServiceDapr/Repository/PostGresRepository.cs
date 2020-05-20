@@ -16,13 +16,11 @@ namespace LoginServiceDapr.Repository
 {
     public class PostGresRepository: IPostGresRepository
     {
-        IConfiguration _config;
-        //private ILogger _logger;
+        IConfiguration _config;        
 
         public PostGresRepository(IConfiguration configuration)
         {
-            _config = configuration;
-            //_logger = logger;
+            _config = configuration;            
         }
 
         IDbConnection OpenConnection(string connStr)
@@ -33,9 +31,7 @@ namespace LoginServiceDapr.Repository
         }
 
         public Person GetLoginUser(string email, string password)
-        {
-            //string connString = "User ID=postgres;Password=password1234;Host=localhost;Port=5432;Database=dvdrental;";
-
+        { 
             var appSettingsSection = _config.GetSection("ProjectSettings");
             var appSettings = appSettingsSection.Get<SettingsModel>();
 

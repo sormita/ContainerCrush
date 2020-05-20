@@ -11,6 +11,7 @@ services:
     depends_on:
     - loginservicedapr
     - postgresqldapper
+    - productservice
     entrypoint: tail -f /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
@@ -25,9 +26,9 @@ services:
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
     ports:
-    - published: 52781
-      target: 80
     - target: 80
+    - published: 5018
+      target: 81
     tty: true
     volumes:
     - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\APIGateway:/app:rw
@@ -49,9 +50,11 @@ services:
     - apigateway
     entrypoint: tail -f /dev/null
     environment:
+      ASPNETCORE_ENVIRONMENT: ' Development'
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
       NUGET_FALLBACK_PACKAGES: ''
+      WebApiBaseUrl: ' http://apigateway:81/api/'
     image: loginfunctionality:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/netcoreapp3.1/LoginFunctionality.dll"'
@@ -95,8 +98,8 @@ services:
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
     ports:
-    - published: 57166
-      target: 5001
+    - published: 5016
+      target: 80
     tty: true
     volumes:
     - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\LoginServiceDapr:/app:rw
@@ -148,6 +151,41 @@ services:
     tty: true
     volumes:
     - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\PostGresqlDapper:/app:rw
+    - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\SormitaChakraborty\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\SormitaChakraborty\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\SormitaChakraborty\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src:rw
+  productservice:
+    build:
+      context: C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker
+      dockerfile: ProductService/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: ProductService
+      target: build
+    container_name: productservice
+    depends_on:
+    - postgresdata
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ConnectionString: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;'
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: productservice:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/netcoreapp3.1/ProductService.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 5020
+      target: 80
+    tty: true
+    volumes:
+    - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\ProductService:/app:rw
     - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
     - C:\Users\SormitaChakraborty\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\SormitaChakraborty\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro

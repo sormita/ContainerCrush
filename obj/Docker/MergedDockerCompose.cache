@@ -7,13 +7,14 @@ services:
     depends_on:
     - loginservicedapr
     - postgresqldapper
+    - productservice
     environment:
       ASPNETCORE_ENVIRONMENT: Development
     image: apigateway
     ports:
-    - published: 52781
-      target: 80
     - target: 80
+    - published: 5018
+      target: 81
   loginfunctionality:
     build:
       context: C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker
@@ -21,6 +22,9 @@ services:
     container_name: loginfunctionality
     depends_on:
     - apigateway
+    environment:
+      ASPNETCORE_ENVIRONMENT: ' Development'
+      WebApiBaseUrl: ' http://apigateway:81/api/'
     image: loginfunctionality
     ports:
     - published: 5014
@@ -36,8 +40,8 @@ services:
       ConnectionString: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;'
     image: loginservicedapr
     ports:
-    - published: 57166
-      target: 5001
+    - published: 5016
+      target: 80
   postgresdata:
     container_name: postgresdata
     environment:
@@ -64,4 +68,17 @@ services:
     ports:
     - published: 5010
       target: 5001
+  productservice:
+    build:
+      context: C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker
+      dockerfile: ProductService/Dockerfile
+    container_name: productservice
+    depends_on:
+    - postgresdata
+    environment:
+      ConnectionString: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;'
+    image: productservice
+    ports:
+    - published: 5020
+      target: 80
 version: '3.4'

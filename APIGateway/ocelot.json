@@ -13,6 +13,18 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
+      "DownstreamPathTemplate": "/api/product/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "productservice",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/product/{everything}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/weatherforecast",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

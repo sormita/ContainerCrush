@@ -42,3 +42,16 @@ C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\L
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\obj\Debug\docker-compose.dcprojAssemblyReference.cache
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\obj\Debug\docker-compose.dcproj.CopyComplete
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Microsoft.Extensions.Configuration.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\ProductService.exe
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\ProductService.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\GraphQL.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\GraphQL.Server.Core.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\GraphQL.Server.Transports.AspNetCore.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\GraphQL.Server.Ui.Playground.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\GraphQL-Parser.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\System.Reactive.Linq.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\System.Reactive.Interfaces.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\ProductService.pdb

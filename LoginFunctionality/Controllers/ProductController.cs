@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 //using Microsoft.AspNet.Identity;
 using System.Security.Claims;
+using WebUtilities;
 
 namespace LoginFunctionality.Controllers
 {    
@@ -26,7 +27,14 @@ namespace LoginFunctionality.Controllers
         //[Authorize]
         public async Task<IActionResult> Index()
         {
-            List<Product> lstproducts = await apiProxy.GetListAsync<Product>("product/GetAll");
+            List<Product> lstproducts;
+            lstproducts = RedisConnector.Get<List<Product>>(User.Identity.Name + "lstProduct");
+            if (lstproducts == null)
+            {
+                lstproducts = await apiProxy.GetListAsync<Product>("product/GetAll");
+                //Saving a list to redis using object
+                RedisConnector.Set(User.Identity.Name +"lstProduct", lstproducts);
+            }
                         
             if (User.Identity.IsAuthenticated)
             {

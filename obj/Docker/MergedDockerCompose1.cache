@@ -54,6 +54,7 @@ services:
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       DOTNET_USE_POLLING_FILE_WATCHER: '1'
       NUGET_FALLBACK_PACKAGES: ''
+      RedisCacheConnection: ' rediscache:6379'
       WebApiBaseUrl: ' http://apigateway:81/api/'
     image: loginfunctionality:dev
     labels:
@@ -62,6 +63,8 @@ services:
         dotnet); then kill $$PID; fi"
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    links:
+    - rediscache
     ports:
     - published: 5014
       target: 80
@@ -191,4 +194,11 @@ services:
     - C:\Users\SormitaChakraborty\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
     - C:\Users\SormitaChakraborty\.nuget\packages:/root/.nuget/packages:ro
     - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src:rw
+  rediscache:
+    container_name: rediscache
+    image: redis:latest
+    ports:
+    - published: 6379
+      target: 6379
+    restart: always
 version: '3.4'

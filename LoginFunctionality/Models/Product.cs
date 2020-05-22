@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace LoginFunctionality.Models
 {
+    [Serializable]
     public class Product
     {
         public int ProductId { get; set; }

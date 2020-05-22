@@ -14,6 +14,13 @@ services:
     ports:
     - "51036:5432"
 
+  rediscache:
+    image: redis:latest
+    container_name: rediscache
+    restart: always
+    ports: 
+    - "6379:6379"
+
   postgresqldapper:
     image: ${DOCKER_REGISTRY-}postgresqldapper
     container_name: postgresqldapper
@@ -71,6 +78,7 @@ services:
     container_name: loginfunctionality
     environment: 
         - WebApiBaseUrl= http://apigateway:81/api/
+        - RedisCacheConnection= rediscache:6379
         - ASPNETCORE_ENVIRONMENT= Development
     ports:
       - "5014:80"
@@ -79,4 +87,6 @@ services:
       dockerfile: LoginFunctionality/Dockerfile      
     depends_on:
       - apigateway
+    links:
+      - rediscache
       

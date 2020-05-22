@@ -1,0 +1,9 @@
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\bin\Debug\netcoreapp3.1\WebUtilities.deps.json
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\bin\Debug\netcoreapp3.1\WebUtilities.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\obj\Debug\netcoreapp3.1\WebUtilities.AssemblyInfoInputs.cache
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\obj\Debug\netcoreapp3.1\WebUtilities.AssemblyInfo.cs
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\obj\Debug\netcoreapp3.1\WebUtilities.csprojAssemblyReference.cache
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\bin\Debug\netcoreapp3.1\WebUtilities.pdb
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\obj\Debug\netcoreapp3.1\WebUtilities.csproj.CoreCompileInputs.cache
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\obj\Debug\netcoreapp3.1\WebUtilities.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\WebUtilities\obj\Debug\netcoreapp3.1\WebUtilities.pdb

@@ -55,3 +55,7 @@ C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\G
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\System.Reactive.Linq.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\System.Reactive.Interfaces.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\ProductService.pdb
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\StackExchange.Redis.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Pipelines.Sockets.Unofficial.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\System.Diagnostics.PerformanceCounter.dll

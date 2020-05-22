@@ -24,8 +24,11 @@ services:
     - apigateway
     environment:
       ASPNETCORE_ENVIRONMENT: ' Development'
+      RedisCacheConnection: ' rediscache:6379'
       WebApiBaseUrl: ' http://apigateway:81/api/'
     image: loginfunctionality
+    links:
+    - rediscache
     ports:
     - published: 5014
       target: 80
@@ -81,4 +84,11 @@ services:
     ports:
     - published: 5020
       target: 80
+  rediscache:
+    container_name: rediscache
+    image: redis:latest
+    ports:
+    - published: 6379
+      target: 6379
+    restart: always
 version: '3.4'

@@ -14,7 +14,8 @@ using System.Security.Claims;
 using WebUtilities;
 
 namespace LoginFunctionality.Controllers
-{    
+{ 
+    [Authorize]
     public class ProductController : Controller
     {
         private IApiClient apiProxy;        

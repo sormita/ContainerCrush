@@ -11,39 +11,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using LoginServiceDapr.Utility;
 using System.IO;
+using Microsoft.Extensions.Options;
 
 namespace LoginServiceDapr.Repository
 {
     public class PostGresRepository: IPostGresRepository
     {
-        IConfiguration _config;        
-
-        public PostGresRepository(IConfiguration configuration)
+        IDbConnection OpenConnection()
         {
-            _config = configuration;            
-        }
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                 .SetBasePath(Directory.GetCurrentDirectory())
+                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                 .AddEnvironmentVariables()
+                 .Build();
 
-        IDbConnection OpenConnection(string connStr)
-        {
-            var conn = new NpgsqlConnection(connStr);
+            string connectionString = configuration["ConnectionString"];
+            var conn = new NpgsqlConnection(connectionString);
             conn.Open();
             return conn;
         }
 
         public Person GetLoginUser(string email, string password)
-        { 
-            var appSettingsSection = _config.GetSection("ProjectSettings");
-            var appSettings = appSettingsSection.Get<SettingsModel>();
-
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables()
-                .Build();
-
-            var connectionString = configuration["ConnectionString"];
-
-            using (var conn = OpenConnection(connectionString))
+        {
+            using (var conn = OpenConnection())
             {
                 Person personUsr = conn.Query<Person>(@"SELECT ""PersonID"", ""PersonRoleId"", ""PersonName"", ""PersonEmail"" FROM public.""Person"" WHERE ""PersonEmail""=@email AND ""Password""=@usr_password;", new { email = email, usr_password = password },
                 commandType: CommandType.Text).ToList().FirstOrDefault();

@@ -46,7 +46,6 @@ C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\M
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Microsoft.Extensions.Logging.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\ProductService.exe
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\ProductService.dll
-C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\GraphQL.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\GraphQL.Server.Core.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\GraphQL.Server.Transports.AspNetCore.dll
@@ -59,3 +58,6 @@ C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\S
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Pipelines.Sockets.Unofficial.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\System.Diagnostics.PerformanceCounter.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\PatientService.exe
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\PatientService.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\PatientService.pdb

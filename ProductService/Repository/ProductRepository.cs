@@ -9,39 +9,31 @@ using System.IO;
 using System.Linq;
 using Dapper;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace ProductService.Repository
 {
     public class ProductRepository: IProductRepository
     {
-        IConfiguration _config;
 
-        public ProductRepository(IConfiguration configuration)
+        IDbConnection OpenConnection()
         {
-            _config = configuration;
-        }
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+               .AddEnvironmentVariables()
+               .Build();
 
-        IDbConnection OpenConnection(string connStr)
-        {
-            var conn = new NpgsqlConnection(connStr);
+            string connectionString = configuration["ConnectionString"];
+
+            var conn = new NpgsqlConnection(connectionString);
             conn.Open();
             return conn;
         }
 
         public List<Product> GetAllProducts()
         {
-            var appSettingsSection = _config.GetSection("ProjectSettings");
-            var appSettings = appSettingsSection.Get<SettingsModel>();
-
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables()
-                .Build();
-
-            var connectionString = configuration["ConnectionString"];
-
-            using (var conn = OpenConnection(connectionString))
+            using (var conn = OpenConnection())
             {
                 List<Product> lstProduct = conn.Query<Product>(@"SELECT * from public.""Medicine"";",
                 commandType: CommandType.Text).ToList();                

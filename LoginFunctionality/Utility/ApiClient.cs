@@ -35,18 +35,7 @@ namespace LoginFunctionality.Utility
         {
             _logger = logger;
             appSettings = app;
-            //if (appSettings != null)
-            //{
-            //    var baseEndpoint = appSettings.Value.WebApiBaseUrl.ToString();
-            //    if (baseEndpoint == null)
-            //    {
-            //        throw new ArgumentNullException("baseEndpoint");
-            //    }
-            //    BaseEndpoint = new Uri(baseEndpoint);
-            //    _httpClient = new HttpClient();
-            //}
-            //else
-            //{
+           
                 IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -61,7 +50,7 @@ namespace LoginFunctionality.Utility
                 }
                 BaseEndpoint = new Uri(baseEndpoint);
                 _httpClient = new HttpClient();
-            //}
+            
             
         }
 
@@ -97,10 +86,10 @@ namespace LoginFunctionality.Utility
         /// <summary>  
         /// Common method for making POST calls  
         /// </summary>  
-        public async Task<T> PostAsync<T>(Uri requestUrl, T content)
+        public async Task<T> PostAsync<T>(string requestUrl, T content)
         {
             //addHeaders();
-            var response = await _httpClient.PostAsync(requestUrl.ToString(), CreateHttpContent<T>(content));
+            var response = await _httpClient.PostAsync(BaseEndpoint + requestUrl, CreateHttpContent<T>(content));
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(data);
@@ -112,7 +101,7 @@ namespace LoginFunctionality.Utility
         public async Task<List<T>> PostAsyncGraphQL<T>(string requestUrl, StringContent stringContent)
         {
             //addHeaders();
-            var response = await _httpClient.PostAsync(BaseEndpoint + requestUrl.ToString(), stringContent);
+            var response = await _httpClient.PostAsync(BaseEndpoint + requestUrl, stringContent);
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
             var data_actual = data.Substring(data.LastIndexOf('[')).Trim('}');            

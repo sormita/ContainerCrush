@@ -1,0 +1,29 @@
+﻿@using LoginFunctionality.Models.Patient
+@model PatientViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Book an Appointment</h1>
+<form method="post" enctype="multipart/form-data" asp-controller="Patient" asp-action="Create">
+    <table>
+        <tr>
+            <td>Appointment Date:</td>
+            <td>@Html.EditorFor(model => model.AppointmentDate, new { htmlAttributes = new { @class = "form-control" } })  </td>
+        </tr>
+        <tr>
+            <td>Available Doctors: </td>
+            <td>@Html.DropDownListFor(x => Model.SelectedDoctor, new SelectList(Model.AvailableDoctors, "PersonID", "PersonName"), htmlAttributes: new { @class = "form-control", @id = "DrpDoctors" })</td>
+            
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create" class="btn btn-primary" /></td>
+        </tr>
+        
+    </table>
+    <hr />
+    @ViewBag.Name
+</form>

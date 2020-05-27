@@ -6,6 +6,7 @@ services:
     container_name: apigateway
     depends_on:
     - loginservicedapr
+    - patientservice
     - postgresqldapper
     - productservice
     environment:
@@ -45,6 +46,19 @@ services:
     ports:
     - published: 5016
       target: 80
+  patientservice:
+    build:
+      context: C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker
+      dockerfile: PatientService/Dockerfile
+    container_name: patientservice
+    depends_on:
+    - postgresdata
+    environment:
+      ConnectionString: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;'
+    image: patientservice
+    ports:
+    - published: 5022
+      target: 81
   postgresdata:
     container_name: postgresdata
     environment:

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
@@ -17,6 +18,7 @@ using Microsoft.OpenApi.Models;
 using ProductService.Entities;
 using ProductService.GraphQL.GraphQLSchema;
 using ProductService.Repository;
+using ProductService.Utility;
 
 namespace ProductService
 {
@@ -53,6 +55,12 @@ namespace ProductService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProductService", Version = "v1" });
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
+
+            // Add functionality to inject IOptions<T>
+            services.AddOptions();
+           
+            // Add our Config object so it can be injected
+            services.Configure<SettingsModel>(Configuration.GetSection("ProjectSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

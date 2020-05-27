@@ -6,10 +6,12 @@
 
     <div class="text-center">
         <a href="@Url.Action("Index", "Product")">Product List</a>
-        
+
 
         <h1 class="display-4">Welcome</h1><a href="@Url.Action("Logout", "Account")">Logout</a>
         <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+        <a href="@Url.Action("Index", "Patient")">Book an Appointment</a>
 
         @if (User.Identity.IsAuthenticated)
         {

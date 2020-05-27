@@ -180,5 +180,11 @@ namespace WebUtilities
                 return null;
         }
 
+        public static void DeleteKeys(string keyName)
+        {
+            //Get a list of keys belonging to a particular user
+            RedisConnector.GetDatabase().KeyDelete(keyName);
+        }
+
     }
 }

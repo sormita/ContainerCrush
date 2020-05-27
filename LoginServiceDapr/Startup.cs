@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginServiceDapr.Automapper;
 using LoginServiceDapr.Repository;
+using LoginServiceDapr.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +47,18 @@ namespace LoginServiceDapr
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LoginServiceDapr", Version = "v1" });
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
+
+            // Add functionality to inject IOptions<T>
+            services.AddOptions();
+
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddEnvironmentVariables()
+                .Build();
+
+            // Add our Config object so it can be injected
+            services.Configure<SettingsModel>(configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

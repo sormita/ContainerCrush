@@ -10,7 +10,7 @@ namespace LoginFunctionality.Utility
     {
         Task<T> GetAsync<T>(string requestUrl);
         Task<List<T>> GetListAsync<T>(string requestUrl);
-        Task<T> PostAsync<T>(Uri requestUrl, T content);
+        Task<T> PostAsync<T>(string requestUrl, T content);
         Task<List<T>> PostAsyncGraphQL<T>(string v, StringContent stringContent);
     }
 }

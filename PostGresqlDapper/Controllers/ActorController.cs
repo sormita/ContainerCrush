@@ -23,6 +23,7 @@ namespace PostGresqlDapper.Controllers
         }
 
         [HttpGet]
+        [Route("GetAll")]
         public IEnumerable<Actor> Get()
         {
             var actors = repos.GetAll();

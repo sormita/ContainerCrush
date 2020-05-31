@@ -1,5 +1,5 @@
 {
-  "ReRoutes": [
+  "Routes": [
     {
       "DownstreamPathTemplate": "/api/patient/{everything}",
       "DownstreamScheme": "http",
@@ -10,19 +10,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/patient/{everything}",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/patient/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "patientservice",
-          "Port": 81
-        }
-      ],
-      "UpstreamPathTemplate": "/api/patient/{everything}",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamHttpMethod": ["GET","POST"]
     },
     {
       "DownstreamPathTemplate": "/api/actor",

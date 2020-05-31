@@ -39,11 +39,14 @@ namespace PatientService.Controllers
         }
 
         [HttpPost]
+        [Route("CreateAppointment")]
         public void CreateAppointment([FromBody]Appointment objAppointment)
         {
             _logger.LogInformation(objAppointment.DoctorId.ToString());
             _logger.LogInformation(objAppointment.PatientId.ToString());
             _logger.LogInformation(objAppointment.Status);
+
+            repos.CreateAppointment(objAppointment);
         }
     }
 }

@@ -47,5 +47,27 @@ namespace PatientService.Repository
                 return lstDoctor;
             }
         }
+
+        public void CreateAppointment(Appointment objAppointment)
+        {
+            try
+            {
+                var param = new DynamicParameters();
+                param.Add("PatientId", objAppointment.PatientId, DbType.Int32, ParameterDirection.Input);
+                param.Add("DoctorId", objAppointment.DoctorId, DbType.Int32, ParameterDirection.Input);
+                param.Add("AppointmentTime", objAppointment.PatientId, DbType.Int32, ParameterDirection.Input);
+                param.Add("AppointmentTime", objAppointment.AppointmentTime, DbType.DateTime, ParameterDirection.Input);
+                using (var conn = OpenConnection())
+                {
+                    conn.Execute("CALL public.usp_createappointment(@PatientId,@DoctorId,@AppointmentTime,@Status)",
+                        new { PatientId = objAppointment.PatientId, DoctorId = objAppointment.DoctorId, AppointmentTime= objAppointment.AppointmentTime,Status="Booked" }, null, null);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+            
+        }
     }
 }

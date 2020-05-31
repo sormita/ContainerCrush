@@ -1,0 +1,9 @@
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\obj\Debug\netcoreapp3.1\DoctorService.csprojAssemblyReference.cache
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\obj\Debug\netcoreapp3.1\DoctorService.AssemblyInfoInputs.cache
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\obj\Debug\netcoreapp3.1\DoctorService.AssemblyInfo.cs
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\obj\Debug\netcoreapp3.1\DoctorService.RazorTargetAssemblyInfo.cache
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\obj\Debug\netcoreapp3.1\staticwebassets\DoctorService.StaticWebAssets.Manifest.cache
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService\DoctorService\obj\Debug\netcoreapp3.1\staticwebassets\DoctorService.StaticWebAssets.xml

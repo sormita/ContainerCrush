@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "qT3VCwShIAUe/+MnLVdASZbKi0HSJvmOrGb9gu8F7j9SfUXY5d/0MVUv2LJmGlwUPeCHf+noo49ZikYVESJgMQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\SormitaChakraborty\\source\\repos\\PostGresqlDapperLoginDocker\\DoctorService\\DoctorService\\DoctorService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SormitaChakraborty\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.8\\microsoft.visualstudio.azure.containers.tools.targets.1.10.8.nupkg.sha512"
+  ],
+  "logs": []
+}

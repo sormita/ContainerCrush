@@ -32,7 +32,7 @@ namespace PatientService
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProductService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PatientService", Version = "v1" });
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
         }
@@ -52,7 +52,7 @@ namespace PatientService
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Product Service V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Patient Service V1");
             });
 
             app.UseRouting();

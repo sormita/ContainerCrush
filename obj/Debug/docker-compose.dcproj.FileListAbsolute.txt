@@ -61,3 +61,6 @@ C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\S
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\PatientService.exe
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\PatientService.dll
 C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\PatientService.pdb
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\DoctorService.exe
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\DoctorService.dll
+C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\bin\Debug\DoctorService.pdb

@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:56170",
+      "applicationUrl": "http://localhost:62837",
       "sslPort": 0
     }
   },
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PatientService": {
+    "DoctorService": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

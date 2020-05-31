@@ -60,6 +60,19 @@ services:
     depends_on:
       - postgresdata
 
+  doctorservice:
+    image: ${DOCKER_REGISTRY-}doctorservice
+    container_name: doctorservice
+    environment: 
+        - ConnectionString= User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;
+    ports:
+      - "5024:5000"
+    build:
+      context: .
+      dockerfile: DoctorService/Dockerfile      
+    depends_on:
+      - postgresdata
+
   productservice:
     image: ${DOCKER_REGISTRY-}productservice
     container_name: productservice
@@ -86,6 +99,7 @@ services:
       - loginservicedapr
       - productservice
       - patientservice
+      - doctorservice
 
   loginfunctionality:
     image: ${DOCKER_REGISTRY-}loginfunctionality

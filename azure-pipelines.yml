@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'ea07e7ae-50a7-4a8f-a55e-03d84c772987'
   imageRepository: 'apigateway'
   containerRegistry: 'healthcareakscicdacr.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/APIGateway/Dockerfile'
+  dockerfilePath: './APIGateway/Dockerfile'
   tag: '$(Build.BuildId)'
   
   # Agent VM image name
@@ -33,9 +33,7 @@ stages:
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        defaultContext: false
-        context: '$(Agent.BuildDirectory)'
+        dockerfile: $(dockerfilePath)        
         workingDirectory: .
         containerRegistry: $(dockerRegistryServiceConnection)        
         tags: |

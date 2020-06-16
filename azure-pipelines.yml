@@ -35,8 +35,7 @@ stages:
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         defaultContext: false
-        context: '$(Build.Repository.LocalPath)'
-        containerRegistry: $(dockerRegistryServiceConnection)
-        workingDirectory: ./
+        context: .
+        containerRegistry: $(dockerRegistryServiceConnection)        
         tags: |
           $(tag)

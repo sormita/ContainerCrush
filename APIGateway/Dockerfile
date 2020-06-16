@@ -19,10 +19,13 @@ COPY . ./
 
 #FROM build AS publish
 #RUN dotnet publish "APIGateway.csproj" -c Release -o /app/publish
-RUN dotnet publish -c Release -o /app/publish
+#RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish -c Release -o out
 
 # Build runtime image
-FROM build AS final
+#FROM build AS final
+FROM microsoft/aspnetcore:3.1
 WORKDIR /app
-COPY --from=publish /app/publish .
+#COPY --from=publish /app/publish .
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "APIGateway.dll"]

@@ -6,16 +6,20 @@ EXPOSE 81
 
 # Copy csproj and restore as distinct layers
 WORKDIR /src
-COPY ["PatientService/PatientService.csproj", "PatientService/"]
-RUN dotnet restore "PatientService/PatientService.csproj"
+#COPY ["PatientService/PatientService.csproj", "PatientService/"]
+COPY *.csproj ./
+#RUN dotnet restore "PatientService/PatientService.csproj"
+RUN dotnet restore
 
 # Copy everything else and build
-COPY . .
-WORKDIR "/src/PatientService"
-RUN dotnet build "PatientService.csproj" -c Release -o /app/build
+#COPY . .
+COPY . ./
+#WORKDIR "/src/PatientService"
+#RUN dotnet build "PatientService.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "PatientService.csproj" -c Release -o /app/publish
+#RUN dotnet publish "PatientService.csproj" -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish
 
 # Build runtime image
 FROM build AS final

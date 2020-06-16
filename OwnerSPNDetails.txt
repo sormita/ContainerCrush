@@ -1,0 +1,4 @@
+"name": "77de8e8a-bc31-4799-b2cc-fe42a5ae2bec",
+  "principalId": "15f7ba83-e768-4f16-a75b-6a63f8558870",
+  "principalType": "ServicePrincipal",
+  "resourceGroup": "AKSRG"

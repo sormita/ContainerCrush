@@ -9,6 +9,7 @@ services:
       target: build
     container_name: apigateway
     depends_on:
+    - doctorservice
     - loginservicedapr
     - patientservice
     - postgresqldapper
@@ -33,6 +34,41 @@ services:
     tty: true
     volumes:
     - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\APIGateway:/app:rw
+    - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\SormitaChakraborty\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\SormitaChakraborty\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\SormitaChakraborty\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src:rw
+  doctorservice:
+    build:
+      context: C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker
+      dockerfile: DoctorService/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: DoctorService
+      target: build
+    container_name: doctorservice
+    depends_on:
+    - postgresdata
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ConnectionString: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;'
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: doctorservice:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/netcoreapp3.1/DoctorService.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 5024
+      target: 5000
+    tty: true
+    volumes:
+    - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService:/app:rw
     - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
     - C:\Users\SormitaChakraborty\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\SormitaChakraborty\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro

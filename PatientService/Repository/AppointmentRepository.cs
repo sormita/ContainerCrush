@@ -8,11 +8,19 @@ using System.IO;
 using System.Linq;
 using Dapper;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace PatientService.Repository
 {
     public class AppointmentRepository : IAppointmentRepository
     {
+        private ILogger<AppointmentRepository> _logger;
+
+        public AppointmentRepository(ILogger<AppointmentRepository> logger)
+        {
+            _logger = logger;
+        }
+
         IDbConnection OpenConnection()
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
@@ -22,6 +30,7 @@ namespace PatientService.Repository
                .Build();
 
             string connectionString = configuration["ConnectionString"];
+            _logger.LogInformation(connectionString);
 
             var conn = new NpgsqlConnection(connectionString);
             conn.Open();

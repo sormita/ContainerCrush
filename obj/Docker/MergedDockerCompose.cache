@@ -5,6 +5,7 @@ services:
       dockerfile: APIGateway/Dockerfile
     container_name: apigateway
     depends_on:
+    - doctorservice
     - loginservicedapr
     - patientservice
     - postgresqldapper
@@ -16,6 +17,19 @@ services:
     - target: 80
     - published: 5018
       target: 81
+  doctorservice:
+    build:
+      context: C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker
+      dockerfile: DoctorService/Dockerfile
+    container_name: doctorservice
+    depends_on:
+    - postgresdata
+    environment:
+      ConnectionString: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;'
+    image: doctorservice
+    ports:
+    - published: 5024
+      target: 5000
   loginfunctionality:
     build:
       context: C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker

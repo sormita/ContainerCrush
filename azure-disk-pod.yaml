@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-pod
+spec:
+  containers:
+  - image: postgres
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+      - name: azure
+        mountPath: /mnt/azure
+  volumes:
+      - name: azure
+        azureDisk:
+          kind: Managed
+          diskName: HealthCareAKSDisk
+          diskURI: /subscriptions/e3a95510-5947-470f-a6ad-0e966c3d64ad/resourceGroups/AKSRG/providers/Microsoft.Compute/disks/HealthCareAKSDisk

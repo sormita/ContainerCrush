@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe
+      convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgresdata
+  name: postgresdata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: postgresdata
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe
+          convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: postgresdata
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_HOST
+          value: postgresdata
+        - name: POSTGRES_PASSWORD
+          value: secret1234
+        - name: POSTGRES_PORT
+          value: "51036"
+        - name: POSTGRES_USER
+          value: postgres
+        image: postgres:latest
+        imagePullPolicy: ""
+        name: postgresdata
+        ports:
+        - containerPort: 5432
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

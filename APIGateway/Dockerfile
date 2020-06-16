@@ -6,7 +6,7 @@ EXPOSE 81
 
 # Copy csproj and restore as distinct layers
 WORKDIR /src
-COPY ["./APIGateway/APIGateway.csproj", "APIGateway/"]
+COPY ["./APIGateway/APIGateway.csproj", "./APIGateway/"]
 RUN dotnet restore "APIGateway/APIGateway.csproj"
 
 # Copy everything else and build

@@ -37,5 +37,6 @@ stages:
         defaultContext: false
         context: '$(Build.Repository.LocalPath)'
         containerRegistry: $(dockerRegistryServiceConnection)
+        workingDirectory: ./
         tags: |
           $(tag)

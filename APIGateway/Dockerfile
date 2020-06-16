@@ -8,15 +8,18 @@ EXPOSE 81
 WORKDIR /src
 #COPY ["./APIGateway/APIGateway.csproj", "./APIGateway/"]
 COPY *.csproj ./
-RUN dotnet restore "APIGateway/APIGateway.csproj"
+#RUN dotnet restore "APIGateway/APIGateway.csproj"
+RUN dotnet restore
 
 # Copy everything else and build
-COPY . .
-WORKDIR "/src/APIGateway"
-RUN dotnet build "APIGateway.csproj" -c Release -o /app/build
+#COPY . .
+COPY . ./
+#WORKDIR "/src/APIGateway"
+#RUN dotnet build "APIGateway.csproj" -c Release -o /app/build
 
-FROM build AS publish
-RUN dotnet publish "APIGateway.csproj" -c Release -o /app/publish
+#FROM build AS publish
+#RUN dotnet publish "APIGateway.csproj" -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish
 
 # Build runtime image
 FROM build AS final

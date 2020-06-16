@@ -35,7 +35,8 @@ stages:
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         defaultContext: false
-        context: .
+        context: '$(Agent.BuildDirectory)'
+        workingDirectory: .
         containerRegistry: $(dockerRegistryServiceConnection)        
         tags: |
           $(tag)

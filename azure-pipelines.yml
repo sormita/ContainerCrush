@@ -36,6 +36,7 @@ stages:
         dockerfile: $(dockerfilePath)
         defaultContext: false
         context: .
+        workingDirectory: .
         containerRegistry: $(dockerRegistryServiceConnection)        
         tags: |
           $(tag)

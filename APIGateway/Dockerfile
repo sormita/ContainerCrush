@@ -27,5 +27,4 @@ FROM build AS final
 #FROM microsoft/aspnetcore:3.1
 WORKDIR /app
 COPY --from=publish /app/publish .
-#COPY */src/out */app/out .
 ENTRYPOINT ["dotnet", "APIGateway.dll"]

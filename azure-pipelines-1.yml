@@ -14,7 +14,7 @@ variables:
   imageRepository: 'patientservice'
   containerRegistry: 'healthcareakscicdacr.azurecr.io'
   dockerfilePath: './PatientService/Dockerfile'
-  tag: '$(Build.BuildId)'
+  tag: 'latest'
   
   # Agent VM image name
   vmImageName: 'ubuntu-latest'

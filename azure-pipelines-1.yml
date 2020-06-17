@@ -56,5 +56,4 @@ stages:
         command: 'apply'
         arguments: '-f patientservice.yaml'
         secretType: 'dockerRegistry'
-        secretName: keyData
         containerRegistryType: 'Azure Container Registry'

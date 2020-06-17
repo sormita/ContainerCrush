@@ -49,11 +49,11 @@ stages:
     - task: Kubernetes@1
       displayName: Deploy an image to AKS
       inputs:
-      connectionType: 'Azure Resource Manager'
-      azureSubscriptionEndpoint: 'Visual Studio Enterprise Subscription(e3a95510-5947-470f-a6ad-0e966c3d64ad)'
-      azureResourceGroup: 'AKSCICDRG'
-      kubernetesCluster: 'HealthCareAKSCluster'
-      command: 'apply'
-      arguments: '-f patientservice.yaml'
-      secretType: 'dockerRegistry'
-      containerRegistryType: 'Azure Container Registry'
+        connectionType: 'Azure Resource Manager'
+        azureSubscriptionEndpoint: 'Visual Studio Enterprise Subscription(e3a95510-5947-470f-a6ad-0e966c3d64ad)'
+        azureResourceGroup: 'AKSCICDRG'
+        kubernetesCluster: 'HealthCareAKSCluster'
+        command: 'apply'
+        arguments: '-f patientservice.yaml'
+        secretType: 'dockerRegistry'
+        containerRegistryType: 'Azure Container Registry'

@@ -55,5 +55,6 @@ stages:
         kubernetesCluster: 'HealthCareAKSCluster'
         command: 'apply'
         arguments: '-f patientservice.yaml'
-        secretType: 'generic'
+        secretType: 'dockerRegistry'
+        secretName: keyData
         containerRegistryType: 'Azure Container Registry'

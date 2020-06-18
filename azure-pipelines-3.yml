@@ -1,0 +1,59 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '2c234e4f-364d-4e07-8102-9554b74d208e'
+  imageRepository: 'loginfunctionality'
+  containerRegistry: 'healthcareakscicdacr.azurecr.io'
+  dockerfilePath: './LoginFunctionality/Dockerfile'
+  tag: 'latest'
+  
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+
+- stage: Deploy
+  displayName: Deploy
+  jobs:  
+  - job: Deploy
+    displayName: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Kubernetes@1
+      displayName: Deploy an image to AKS
+      inputs:
+        connectionType: 'Azure Resource Manager'
+        azureSubscriptionEndpoint: 'Visual Studio Enterprise Subscription(e3a95510-5947-470f-a6ad-0e966c3d64ad)'
+        azureResourceGroup: 'AKSCICDRG'
+        kubernetesCluster: 'HealthCareAKSCluster'
+        command: 'apply'
+        arguments: '-f loginfunctionality.yaml'
+        secretType: 'dockerRegistry'
+        containerRegistryType: 'Azure Container Registry'          

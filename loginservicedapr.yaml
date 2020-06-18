@@ -29,7 +29,7 @@ spec:
       - env:
         - name: ConnectionString
           value: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=51036;Database=postgres;'
-        image: healthcareakscicdacr.azurecr.io/patientservice:latest
+        image: healthcareakscicdacr.azurecr.io/loginservicedapr:latest
         imagePullPolicy: ""
         name: loginservicedapr
         ports:
@@ -56,7 +56,7 @@ spec:
   ports:
   - name: "5016"
     port: 5016
-    targetPort: 81
+    targetPort: 80
   selector:
     io.kompose.service: loginservicedapr
 status:

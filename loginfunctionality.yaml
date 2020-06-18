@@ -32,7 +32,7 @@ spec:
         - name: RedisCacheConnection
           value: ' rediscache:6379'
         - name: WebApiBaseUrl
-          value: ' http://apigateway:81/api/'
+          value: ' http://20.185.77.158:5018/api/'
         image: healthcareakscicdacr.azurecr.io/loginfunctionality:latest
         imagePullPolicy: ""
         name: loginfunctionality

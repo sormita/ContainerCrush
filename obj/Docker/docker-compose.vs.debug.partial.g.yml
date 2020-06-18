@@ -11,19 +11,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_apigateway$
     volumes:
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\APIGateway:/app
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src
       - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\SormitaChakraborty\.nuget\packages\:/root/.nuget/packages:ro
+#$nuget_volume_mapping_apigateway$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/APIGateway.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_apigateway$ \"/app/bin/Debug/netcoreapp3.1/APIGateway.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
@@ -37,19 +37,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_doctorservice$
     volumes:
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\DoctorService:/app
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src
       - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\SormitaChakraborty\.nuget\packages\:/root/.nuget/packages:ro
+#$nuget_volume_mapping_doctorservice$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/DoctorService.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_doctorservice$ \"/app/bin/Debug/netcoreapp3.1/DoctorService.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
@@ -64,19 +64,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_loginfunctionality$
     volumes:
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\LoginFunctionality:/app
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src
       - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\SormitaChakraborty\.nuget\packages\:/root/.nuget/packages:ro
+#$nuget_volume_mapping_loginfunctionality$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/LoginFunctionality.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_loginfunctionality$ \"/app/bin/Debug/netcoreapp3.1/LoginFunctionality.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
@@ -91,19 +91,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_loginservicedapr$
     volumes:
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\LoginServiceDapr:/app
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src
       - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\SormitaChakraborty\.nuget\packages\:/root/.nuget/packages:ro
+#$nuget_volume_mapping_loginservicedapr$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/LoginServiceDapr.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_loginservicedapr$ \"/app/bin/Debug/netcoreapp3.1/LoginServiceDapr.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
@@ -118,19 +118,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_patientservice$
     volumes:
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\PatientService:/app
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src
       - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\SormitaChakraborty\.nuget\packages\:/root/.nuget/packages:ro
+#$nuget_volume_mapping_patientservice$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/PatientService.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_patientservice$ \"/app/bin/Debug/netcoreapp3.1/PatientService.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
@@ -145,19 +145,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_postgresqldapper$
     volumes:
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\PostGresqlDapper:/app
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src
       - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\SormitaChakraborty\.nuget\packages\:/root/.nuget/packages:ro
+#$nuget_volume_mapping_postgresqldapper$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/PostGresqlDapper.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_postgresqldapper$ \"/app/bin/Debug/netcoreapp3.1/PostGresqlDapper.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
@@ -172,19 +172,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_productservice$
     volumes:
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker\ProductService:/app
       - C:\Users\SormitaChakraborty\source\repos\PostGresqlDapperLoginDocker:/src
       - C:\Users\SormitaChakraborty\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\SormitaChakraborty\.nuget\packages\:/root/.nuget/packages:ro
+#$nuget_volume_mapping_productservice$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/ProductService.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_productservice$ \"/app/bin/Debug/netcoreapp3.1/ProductService.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true

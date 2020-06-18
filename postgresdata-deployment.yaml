@@ -45,5 +45,5 @@ spec:
         resources: {}
       restartPolicy: Always
       serviceAccountName: ""
-      volumes: null
+      volumes: postgresdb
 status: {}

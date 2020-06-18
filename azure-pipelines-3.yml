@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '2c234e4f-364d-4e07-8102-9554b74d208e'
-  imageRepository: 'sormitacontainercrush'
+  imageRepository: 'loginfunctionality'
   containerRegistry: 'healthcareakscicdacr.azurecr.io'
   dockerfilePath: './LoginFunctionality/Dockerfile'
   tag: 'latest'

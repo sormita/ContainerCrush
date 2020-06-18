@@ -28,7 +28,7 @@ spec:
       containers:
       - env:
         - name: ConnectionString
-          value: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=5432;Database=postgres;'
+          value: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=51036;Database=postgres;'
         image: healthcareakscicdacr.azurecr.io/patientservice:latest
         imagePullPolicy: ""
         name: loginservicedapr

@@ -7,13 +7,13 @@ metadata:
     kompose.version: 1.21.0 (992df58d8)
   creationTimestamp: null
   labels:
-    io.kompose.service: loginservicedapr
-  name: loginservicedapr
+    io.kompose.service: loginfunctionality
+  name: loginfunctionality
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: loginservicedapr
+      io.kompose.service: loginfunctionality
   strategy: {}
   template:
     metadata:
@@ -23,15 +23,19 @@ spec:
         kompose.version: 1.21.0 (992df58d8)
       creationTimestamp: null
       labels:
-        io.kompose.service: loginservicedapr
+        io.kompose.service: loginfunctionality
     spec:
       containers:
       - env:
-        - name: ConnectionString
-          value: ' User ID=postgres;Password=secret1234;Host=postgresdata;Port=51036;Database=postgres;'
-        image: healthcareakscicdacr.azurecr.io/patientservice:latest
+        - name: ASPNETCORE_ENVIRONMENT
+          value: ' Development'
+        - name: RedisCacheConnection
+          value: ' rediscache:6379'
+        - name: WebApiBaseUrl
+          value: ' http://apigateway:81/api/'
+        image: loginfunctionality
         imagePullPolicy: ""
-        name: loginservicedapr
+        name: loginfunctionality
         ports:
         - containerPort: 80
         resources: {}
@@ -49,16 +53,16 @@ metadata:
     kompose.version: 1.21.0 (992df58d8)
   creationTimestamp: null
   labels:
-    io.kompose.service: loginservicedapr
-  name: loginservicedapr
+    io.kompose.service: loginfunctionality
+  name: loginfunctionality
 spec:
   type: LoadBalancer
   ports:
-  - name: "5016"
-    port: 5016
-    targetPort: 81
+  - name: "5014"
+    port: 5014
+    targetPort: 80
   selector:
-    io.kompose.service: loginservicedapr
+    io.kompose.service: loginfunctionality
 status:
   loadBalancer: {}
 

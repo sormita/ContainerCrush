@@ -6,19 +6,25 @@ EXPOSE 80
 
 # Copy csproj and restore as distinct layers
 WORKDIR /src
-COPY ["LoginFunctionality/LoginFunctionality.csproj", "LoginFunctionality/"]
-RUN dotnet restore "LoginFunctionality/LoginFunctionality.csproj"
+#COPY ["./APIGateway/APIGateway.csproj", "./APIGateway/"]
+COPY *.csproj ./
+#RUN dotnet restore "APIGateway/APIGateway.csproj"
+RUN dotnet restore
 
 # Copy everything else and build
-COPY . .
-WORKDIR "/src/LoginFunctionality"
-RUN dotnet build "LoginFunctionality.csproj" -c Release -o /app/build
+#COPY . .
+COPY . ./
+#WORKDIR "/src/APIGateway"
+#RUN dotnet build "APIGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LoginFunctionality.csproj" -c Release -o /app/publish
+#RUN dotnet publish "APIGateway.csproj" -c Release -o /app/publish
+#RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish
 
 # Build runtime image
 FROM build AS final
+#FROM microsoft/aspnetcore:3.1
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "LoginFunctionality.dll"]

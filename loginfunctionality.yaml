@@ -33,7 +33,7 @@ spec:
           value: ' rediscache:6379'
         - name: WebApiBaseUrl
           value: ' http://apigateway:81/api/'
-        image: loginfunctionality
+        image: healthcareakscicdacr.azurecr.io/loginfunctionality:latest
         imagePullPolicy: ""
         name: loginfunctionality
         ports:

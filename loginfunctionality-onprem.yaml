@@ -24,7 +24,9 @@ spec:
       creationTimestamp: null
       labels:
         io.kompose.service: loginfunctionality
-    spec:      
+    spec:
+      imagePullSecrets:
+        - name: acrloginpullsecret      
       containers:      
       - env:
         - name: ASPNETCORE_ENVIRONMENT
@@ -57,11 +59,13 @@ metadata:
     io.kompose.service: loginfunctionality
   name: loginfunctionality
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - name: "5014"
+  - name: http
     port: 5014
     targetPort: 80
+    protocol: TCP
+    nodePort: 30007
   selector:
     io.kompose.service: loginfunctionality
 status:

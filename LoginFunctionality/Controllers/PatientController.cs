@@ -47,7 +47,7 @@ namespace LoginFunctionality.Controllers
             {
                 //model.Status = "Booked";
 
-                Appointment objAppoint = new Appointment();
+                BookAppointment objAppoint = new BookAppointment();
 
                 //var claims1 = ClaimsPrincipal.Current.Identities.First();
                 objAppoint.PatientId= Int32.Parse(User.Claims.FirstOrDefault(x=>x.Type== CLAIM_TYPE_NAME).Value);                

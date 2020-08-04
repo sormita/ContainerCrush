@@ -57,7 +57,7 @@ namespace PatientService.Repository
             }
         }
 
-        public void CreateAppointment(Appointment objAppointment)
+        public void CreateAppointment(BookAppointment objAppointment)
         {
             try
             {                

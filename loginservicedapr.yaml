@@ -52,7 +52,7 @@ metadata:
     io.kompose.service: loginservicedapr
   name: loginservicedapr
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - name: "5016"
     port: 5016

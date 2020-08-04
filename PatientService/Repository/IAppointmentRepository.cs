@@ -10,6 +10,6 @@ namespace PatientService.Repository
     {
         List<Appointment> GetAllAppointments();
         List<Doctor> GetDoctors();
-        void CreateAppointment(Appointment objAppointment);
+        void CreateAppointment(BookAppointment objAppointment);
     }
 }

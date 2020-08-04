@@ -13,4 +13,12 @@ namespace PatientService.Entities
         public DateTime AppointmentTime { get; set; }
         public string Status { get; set; }
     }
+
+    public class BookAppointment
+    {        
+        public int PatientId { get; set; }
+        public int DoctorId { get; set; }
+        public DateTime AppointmentTime { get; set; }
+        public string Status { get; set; }
+    }
 }

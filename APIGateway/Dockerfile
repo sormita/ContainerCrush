@@ -6,16 +6,14 @@ EXPOSE 81
 
 # Copy csproj and restore as distinct layers
 WORKDIR /src
-COPY ["APIGateway/APIGateway.csproj", "APIGateway/"]
-RUN dotnet restore "APIGateway/APIGateway.csproj"
+COPY *.csproj ./
+RUN dotnet restore
 
 # Copy everything else and build
-COPY . .
-WORKDIR "/src/APIGateway"
-RUN dotnet build "APIGateway.csproj" -c Release -o /app/build
+COPY . ./
 
 FROM build AS publish
-RUN dotnet publish "APIGateway.csproj" -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish
 
 # Build runtime image
 FROM build AS final
